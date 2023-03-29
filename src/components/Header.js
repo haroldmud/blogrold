@@ -21,7 +21,7 @@ function Header() {
    })
   
   return (
-  <header className={` ${isScroll? "py-4" : "py-1"} h-fit fixed w-full bg-white px-4  flex justify-between border-b`}>
+  <header className={` ${isScroll? "py-4" : "py-1"} z-10 h-fit fixed w-full bg-white px-4  flex justify-between border-b`}>
         <div className="flex">
           <a target="_blank" href="https://www.blogger.com" className='my-auto'><span className={`${isScroll ? "text-[2.3rem]": "text-[1.4rem]"} text-blue-900`}><FaBlog/></span></a>
           <div className="my-auto ml-4">
