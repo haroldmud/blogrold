@@ -1,4 +1,3 @@
-import Api from "./components/apiSample";
 import Header from "./components/Header";
 import Blog from "./components/Blog";
 
