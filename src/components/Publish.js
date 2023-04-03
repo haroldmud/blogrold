@@ -22,12 +22,12 @@ function Publish() {
     }, [createPublisher]);
 
   useEffect(() => {
-      const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&apiKey=16c348f7b1ed4b9abba58a10c28f7983`;
+      const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&pageSize=10&apiKey=16c348f7b1ed4b9abba58a10c28f7983`;
       fetch(new Request(page))
         .then(res => res.json())
         .then(data => createPublisher(listing(data.articles)));
       console.log(page);
-    },[fetcher]
+    },[createPublisher,fetcher]
   );
 
   const handleSwitch = () => {setSwitched(false);};
@@ -70,8 +70,8 @@ function Publish() {
                   </div>
                   <div className="">
                     {
-                      listData?.slice(0,10)?.map((value, index)=>
-                      <a href={value.url}target="_blank"  key={index} className="flex justify-between border p-2 mx-auto hover:shadow w-full">
+                      listData?.map((value, index)=>
+                      <a href={value.url} target="_blank" rel="noreferrer" key={index} className="flex justify-between border p-2 mx-auto hover:shadow w-full">
                       <div className="flex flex-col justify-between py-2 gap-4">
                         <div  className="flex flex-col gap-2">
                           <h2 className="text-2xl leading-8 text-left font-bold text-blue-900">{value.title}</h2>
