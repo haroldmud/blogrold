@@ -11,7 +11,7 @@ function Header() {
   const [isScroll, setIsScroll] = useState(true)
    useEffect(()=>{
     const handleScroll =()=>{
-      if(window.scrollY > 500){
+      if(window.scrollY > 200){
         setIsScroll(false)
       }else{
         setIsScroll(true)

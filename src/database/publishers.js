@@ -1,0 +1,1 @@
+export const Publishers = 'https://news-proxy.netlify.app/api/top-headlines/sources?apiKey=16c348f7b1ed4b9abba58a10c28f7983'

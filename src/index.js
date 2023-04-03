@@ -6,11 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import fetchSlice from './features/fetchSlice';
+import publishSlice from './features/publishSlice';
+import listSlice from './features/listSlice';
 
 
 const store = configureStore({
   reducer:{
     fetched: fetchSlice,
+    published: publishSlice,
+    listed: listSlice
   }
 })
 
