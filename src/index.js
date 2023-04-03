@@ -9,6 +9,7 @@ import fetchSlice from './features/fetchSlice';
 import publishSlice from './features/publishSlice';
 import listSlice from './features/listSlice';
 import searchSlice from './features/searchSlice';
+import submitSlice from './features/submitSlice';
 
 
 const store = configureStore({
@@ -16,7 +17,8 @@ const store = configureStore({
     fetched: fetchSlice,
     published: publishSlice,
     listed: listSlice,
-    searched: searchSlice
+    searched: searchSlice,
+    submitted: submitSlice,
   }
 })
 
