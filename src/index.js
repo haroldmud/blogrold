@@ -8,13 +8,15 @@ import { Provider } from 'react-redux';
 import fetchSlice from './features/fetchSlice';
 import publishSlice from './features/publishSlice';
 import listSlice from './features/listSlice';
+import searchSlice from './features/searchSlice';
 
 
 const store = configureStore({
   reducer:{
     fetched: fetchSlice,
     published: publishSlice,
-    listed: listSlice
+    listed: listSlice,
+    searched: searchSlice
   }
 })
 

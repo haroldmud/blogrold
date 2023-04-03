@@ -10,13 +10,14 @@ import { Articles } from '../database/article';
 const Blog =()=> {
   
   const newsData = useSelector(prev => prev.fetched.value.news);
-  
   const createNews = useDispatch();
   useEffect(()=>{
       fetch(new Request(Articles))
         .then(res => res.json())
         .then(data => createNews(fetching(data.articles)))
   },[createNews]);
+
+  
 
   const handlePopUp =(index)=>{
     let newNews = [...newsData];

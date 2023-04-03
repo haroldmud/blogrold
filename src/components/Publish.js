@@ -12,7 +12,6 @@ function Publish() {
   const [check, setCheck] = useState("");
   const [switched, setSwitched] = useState(false);
   const [fetcher, setFecther] = useState("");
-
   const createPublisher = useDispatch();
 
   useEffect(() => {
@@ -51,22 +50,17 @@ function Publish() {
 
   return (
     <section className={`border w-[20rem] h-[30rem] scroll overflow-y-scroll`}>
-      <div className="font-bold text-blue-900 sticky top-0 bg-white w-[19.2rem] p-2 border-b">
-        Publishers
-      </div>
+      <h3 className="font-bold text-blue-900 sticky top-0 bg-white w-[19.2rem] p-2 border-b">Publishers</h3>
       <div className=" flex flex-col px-2">
         {Base.map((item, idx) =>
           <div>
             <button onClick={() => { handleCheck(item); setFecther(item.id);  }} key={idx} className={`${item === check && "bg-gray-300"}  w-full text-left text-[10px] font-semibold`}>
               {item.name}
             </button>
-            {item === check &&
-              <div className={`${switched ? "fixed" : "hidden"} lg:h-[100vh] h-[100rem] pb-12  w-full left-0 z-30 color top-0`}>
+            {item === check && <div className={`${switched ? "fixed" : "hidden"} lg:h-[100vh] h-[100rem] pb-12  w-full left-0 z-30 color top-0`}>
                 <div className="shadow lg:w-6/12 w-11/12 lg:h-[38rem] h-[50rem] mt-4 overflow-y-scroll scroll pb-4 bg-white  mx-auto">
                   <div className="flex justify-end bg-white  h-12">
-                    <button onClick={handleSwitch} className="p-4 fixed bg-white top-4">
-                      <VscChromeClose />
-                    </button>
+                    <button onClick={handleSwitch} className="p-4 fixed bg-white top-4"><VscChromeClose /></button>
                   </div>
                   <div className="">
                     {
@@ -83,8 +77,7 @@ function Publish() {
                         </div>
                       </div>
                       <img  className="my-auto w-[8rem] ml-2 object-cover h-[8rem]" src={value.urlToImage} alt="" />
-                    </a>
-                      )
+                    </a> )
                     }
                   </div>
                 </div>
@@ -95,5 +88,4 @@ function Publish() {
     </section>
   );
 }
-
 export default Publish;
