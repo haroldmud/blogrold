@@ -11,6 +11,8 @@ const Blog =()=> {
   const newsData = useSelector(prev => prev.fetched.value.news);
   const searchPage = useSelector(prev => prev.searched.value.search);
   const [loading, setLoading] = useState(true);
+  const createNews = useDispatch();
+  useEffect(()=>{
     const fetchData = async () => {
       try {
         const response = await fetch(Articles);
@@ -22,9 +24,8 @@ const Blog =()=> {
         setLoading(false);
       }
     };
-    const createNews = useDispatch();
-    useEffect(()=>{
-      fetchData()
+    fetchData()
+    return ()=> {fetchData()}
     },[createNews]);
 
   const handlePopUp =(index)=>{
