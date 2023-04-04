@@ -1,0 +1,2 @@
+export  const loadImg = 'https://icon-library.com/images/256-256-1c18e6bfed1addc5bd0038ae72d766a9-loading_71814.png';
+export const noData = "https://icon-library.com/images/not-found-icon/not-found-icon-4.jpg";

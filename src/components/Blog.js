@@ -1,23 +1,30 @@
 import Publish from './Publish';
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from 'react';
-import { fetching } from '../features/fetchSlice';
-import { popping } from '../features/fetchSlice';
-import { switching } from '../features/fetchSlice';
+import { useEffect, useState } from 'react';
+import { fetching, popping, switching } from '../features/fetchSlice';
 import {VscChromeClose} from 'react-icons/vsc'
+import { loadImg, noData } from '../database/image';
 import { Articles } from '../database/article';
 import Search from './Search';
 
 const Blog =()=> {
-  
   const newsData = useSelector(prev => prev.fetched.value.news);
-  const searchPage = useSelector(prev => prev.searched.value.search)
-  console.log(searchPage)
-  const createNews = useDispatch();
+  const searchPage = useSelector(prev => prev.searched.value.search);
+  const [loading, setLoading] = useState(true);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(Articles);
+        const jsonData = await response.json();
+        createNews(fetching(jsonData.articles))
+        setLoading(false);
+      } catch (error) {
+        console.error(error);
+        setLoading(false);
+      }
+    };
+    const createNews = useDispatch();
     useEffect(()=>{
-        fetch(new Request(Articles))
-          .then(res => res.json())
-          .then(data => createNews(fetching(data.articles)))
+      fetchData()
     },[createNews]);
 
   const handlePopUp =(index)=>{
@@ -36,13 +43,16 @@ const Blog =()=> {
     createNews(switching(newNewsData))
   }
   
-
   return (
     <section className="max-w-[80rem] mx-auto pt-20  relative">
-     <div className='flex justify-center gap-8 mx-auto'>
+     {loading ?(
+      <div className='w-full'>
+        <p className='mx-auto my-auto w-fit py-[15rem]'><span ><img src={loadImg} alt='loading...' className='w-10 animate-spin text-blue-800'/></span></p>
+      </div>
+     ) : newsData ? (
+      <div className='flex justify-center gap-8 mx-auto'>
       <div className='flex flex-col gap-4  md:w-6/12'>
-      { 
-          newsData.map((item, idx) => 
+      { newsData?.map((item, idx) => 
             <div key={idx} className=''>
               <button  onClick={()=>{handlePopUp(idx)}} key={idx} className="flex border p-2 mx-auto hover:shadow">
                 <div className="flex flex-col gap-4">
@@ -60,9 +70,7 @@ const Blog =()=> {
               </button>
               <div className={`${item.poppedUp ? "flex" : "hidden"}  flex-col lg:justify-center  z-20 fixed color  w-full lg:h-[100vh] h-[100rem] top-0 left-0`}>
                 <div className='shadow md:w-6/12 w-11/12 h-fit pb-4 bg-white lg:mt-0 mt-32  mx-auto'>
-                  <div className='flex justify-end'>
-                    <button onClick={handleSwitch} className='p-4'><VscChromeClose/></button>
-                  </div>
+                  <div className='flex justify-end'><button onClick={handleSwitch} className='p-4'><VscChromeClose/></button></div>
                   <div>
                     <img className='w-full h-fit object-cover' src={item.urlToImage} alt="" />
                     <div  className="flex flex-col gap-2 px-4">
@@ -80,10 +88,8 @@ const Blog =()=> {
           )
           }
       </div>
-        <div className='md:flex flex-col w-3/12 hidden'>
-          <Publish/>        
-        </div>
-     </div>
+        <div className='md:flex flex-col w-3/12 hidden'><Publish/></div>
+     </div>) : ( <div><img src={noData} className='mx-auto py-[7rem]' alt="" /></div>)}
         <div className='md:flex flex-col w-3/12 hidden'>
           {searchPage && <Search/>}    
         </div>
