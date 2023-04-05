@@ -21,7 +21,7 @@ function Publish() {
     }, [createPublisher]);
 
   useEffect(() => {
-      const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&pageSize=10&apiKey=16c348f7b1ed4b9abba58a10c28f7983`;
+      const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&pageSize=10&apiKey=baeaedd25636413da23a335f6001fd67`;
       fetch(new Request(page))
         .then(res => res.json())
         .then(data => createPublisher(listing(data.articles)));
