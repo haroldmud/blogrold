@@ -31,7 +31,7 @@ function Search() {
   },[searched])
   return (
     <div className='flex justify-center fixed h-[100vh] w-full top-0 pt-20 color'>
-      <div className='shadow lg:w-6/12 w-11/12 lg:h-[38rem] h-[50rem] overflow-y-scroll scroll pb-4 bg-white  mx-auto'>
+      <div className='shadow lg:w-6/12 w-11/12 lg:h-[35rem] h-[50rem] overflow-y-scroll scroll pb-4 bg-white  mx-auto '>
         <div className='flex justify-end p-4'>
           <button onClick={handleClose}><VscChromeClose/></button>
         </div>
