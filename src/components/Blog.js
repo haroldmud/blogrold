@@ -26,7 +26,7 @@ const Blog =()=> {
     };
     fetchData()
     return ()=> {fetchData()}
-    },[]);
+    },[createNews]);
 
   const handlePopUp =(index)=>{
     let newNews = [...newsData];

@@ -48,7 +48,7 @@ function Header() {
         </div>
         <div className="flex gap-8 pr-8">
           <div className="md:hidden flex my-auto text-3xl text-gray-400"><CiSearch/></div>
-            <a href='https://www.blogger.com/go/createyourblog' target="_blank" className="text-gray-400 flex gap-1">
+            <a href='https://www.blogger.com/go/createyourblog' target="_blank" rel="noreferrer" className="text-gray-400 flex gap-1">
               <span className="my-auto text-2xl text-gray-400"><TfiWrite/></span>
               <p className="my-auto">Write</p>
             </a>
