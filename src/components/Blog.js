@@ -53,9 +53,10 @@ const Blog =()=> {
      ) : newsData ? (
       <div className='flex justify-center gap-8 mx-auto'>
       <div className='flex flex-col gap-4  md:w-6/12'>
+        
       { newsData?.map((item, idx) => 
             <div key={idx} className=''>
-              <button  onClick={()=>{handlePopUp(idx)}} key={idx} className="flex border p-2 mx-auto hover:shadow">
+              <button  onClick={()=>{handlePopUp(idx)}} key={idx} className="flex justify-between  w-full border p-2 mx-auto hover:shadow">
                 <div className="flex flex-col gap-4">
                   <div  className="flex flex-col gap-2">
                     <p className='text-left text-[12px]'><span className="text-gray-400">written by{" "}</span>{item.author}</p>

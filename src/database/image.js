@@ -1,2 +1,3 @@
 export  const loadImg = 'https://icon-library.com/images/256-256-1c18e6bfed1addc5bd0038ae72d766a9-loading_71814.png';
 export const noData = "https://icon-library.com/images/not-found-icon/not-found-icon-4.jpg";
+export const noSearch = "https://static.vecteezy.com/system/resources/previews/007/872/974/original/file-not-found-illustration-with-confused-people-holding-big-magnifier-search-no-result-data-not-found-concept-can-be-used-for-website-landing-page-animation-etc-vector.jpg"
