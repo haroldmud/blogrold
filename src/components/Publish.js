@@ -66,7 +66,7 @@ function Publish() {
                 handleCheck(item);
                 setFecther(item.id);
               }}
-              key={idx}
+              key={item.id}
               className={`${
                 item === check && "bg-gray-300"
               }  w-full text-left text-[10px] font-semibold`}
