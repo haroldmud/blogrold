@@ -57,7 +57,7 @@ function Search() {
                 href={value.url}
                 target="_blank"
                 rel="noreferrer"
-                key={index}
+                key={value.id}
                 className="flex justify-between border p-2 mx-auto hover:shadow w-full"
               >
                 <div className="flex flex-col justify-between py-2 gap-4">
