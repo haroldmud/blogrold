@@ -9,12 +9,13 @@ function Search() {
   const searched = useSelector((prev) => prev.submitted.value.submit);
   const [loaded, setLoaded] = useState(true);
   const closePage = useDispatch();
+  const searchKey = process.env.REACT_APP_KEY;
   const handleClose = () => {
     closePage(searching(false));
   };
   const [research, setresearch] = useState([]);
   useEffect(() => {
-    const seek = `https://news-proxy.netlify.app/api/everything?q=${searched}&pageSize=10&apiKey=baeaedd25636413da23a335f6001fd67`;
+    const seek = `https://news-proxy.netlify.app/api/everything?q=${searched}&pageSize=10&apiKey=${searchKey}`;
     const fetchSearch = async () => {
       try {
         const response = await fetch(seek);
@@ -26,7 +27,7 @@ function Search() {
       }
     };
     fetchSearch();
-  }, [searched]);
+  }, [searched, searchKey]);
   return (
     <div className="flex justify-center fixed h-[100vh] w-full top-0 pt-20 color">
       <div className="shadow lg:w-6/12 w-11/12 lg:h-[35rem] h-[50rem] overflow-y-scroll scroll pb-4 bg-white  mx-auto ">

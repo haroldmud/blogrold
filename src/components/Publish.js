@@ -13,6 +13,7 @@ function Publish() {
   const [switched, setSwitched] = useState(false);
   const [fetcher, setFecther] = useState("");
   const createPublisher = useDispatch();
+  const apiKey = process.env.REACT_APP_KEY;
 
   useEffect(() => {
     fetch(new Request(Publishers))
@@ -21,12 +22,12 @@ function Publish() {
   }, [createPublisher]);
 
   useEffect(() => {
-    const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&pageSize=10&apiKey=baeaedd25636413da23a335f6001fd67`;
+    const page = `https://news-proxy.netlify.app/api/everything?sources=${fetcher}&pageSize=10&apiKey=${apiKey}`;
     fetch(new Request(page))
       .then((res) => res.json())
       .then((data) => createPublisher(listing(data.articles)));
     console.log(page);
-  }, [createPublisher, fetcher]);
+  }, [createPublisher, fetcher, apiKey]);
 
   const handleSwitch = () => {
     setSwitched(false);
