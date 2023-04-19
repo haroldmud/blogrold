@@ -29,6 +29,9 @@ function Header() {
       }
     };
     window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.addEventListener("scroll", handleScroll);
+    };
   });
   const handleSubmit = () => {
     createNews(submitting(type));
@@ -57,8 +60,8 @@ function Header() {
         </a>
         <div className="my-auto ml-4">
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
+            onSubmit={(event) => {
+              event.preventDefault();
               handleSubmit();
             }}
             className="md:flex hidden bg-gray-100 rounded-3xl my-auto p-1 pr-4"
