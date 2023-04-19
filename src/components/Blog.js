@@ -65,7 +65,7 @@ const Blog = () => {
         <div className="flex justify-center gap-8 mx-auto">
           <div className="flex flex-col gap-4  md:w-6/12">
             {newsData?.map((item, idx) => (
-              <div key={idx} className="">
+              <div key={item.id} className="">
                 <button
                   onClick={() => {
                     handlePopUp(idx);
