@@ -7,12 +7,11 @@ import { IoMdContact } from "react-icons/io";
 import { SlArrowDown } from "react-icons/sl";
 import { searching } from "../features/searchSlice";
 import { submitting } from "../features/submitSlice";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 
 function Header() {
   const [isScroll, setIsScroll] = useState(true);
   const [type, setType] = useState("");
-  const isSearched = useSelector((prev) => prev.searched.value.search);
   const createNews = useDispatch();
 
   const handleSearched = () => {
@@ -30,7 +29,7 @@ function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => {
-      window.addEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   });
   const handleSubmit = () => {
