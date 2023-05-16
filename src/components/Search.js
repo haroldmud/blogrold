@@ -9,7 +9,7 @@ function Search() {
   const searched = useSelector((prev) => prev.submitted.value.submit);
   const [loaded, setLoaded] = useState(true);
   const closePage = useDispatch();
-  const searchKey = process.env.REACT_APP_KEY;
+  const searchKey = 'baeaedd25636413da23a335f6001fd67';
   const handleClose = () => {
     closePage(searching(false));
   };
@@ -29,7 +29,7 @@ function Search() {
     fetchSearch();
   }, [searched, searchKey]);
   return (
-    <div className="flex justify-center fixed h-[100vh] w-full top-0 pt-20 color">
+  
       <div className="shadow lg:w-6/12 w-11/12 lg:h-[35rem] h-[50rem] overflow-y-scroll scroll pb-4 bg-white  mx-auto ">
         <div className="flex justify-end p-4">
           <button onClick={handleClose}>
@@ -93,7 +93,6 @@ function Search() {
           )}
         </div>
       </div>
-    </div>
   );
 }
 

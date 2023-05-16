@@ -48,7 +48,7 @@ const Blog = () => {
   };
 
   return (
-    <section className="max-w-[80rem] mx-auto pt-20  relative">
+    <section className="max-w-[80rem] mx-auto pt-20 relative">
       {loading ? (
         <div className="w-full">
           <p className="mx-auto my-auto w-fit py-[15rem]">
@@ -158,9 +158,14 @@ const Blog = () => {
           <img src={noData} className="mx-auto py-[7rem]" alt="" />
         </div>
       )}
-      <div className="md:flex flex-col w-3/12 hidden">
-        {searchPage && <Search />}
-      </div>
+      {searchPage &&
+          <div className=" fixed top-0 ">
+            <div className="z-20 w-full h-[100vh] pt-20 color">
+              <Search />
+          </div>
+          </div>
+      }
+
     </section>
   );
 };
